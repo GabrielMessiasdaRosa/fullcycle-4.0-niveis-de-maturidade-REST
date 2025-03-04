@@ -5,10 +5,11 @@ Conteúdo:
 - 01 - Conceitos do REST
 - 02 - Exemplo de uso "Freestyle" do REST
 - 03 - Níveis de Maturidade do Richardson
-- 04 - RMM - Level 1 - Recursos
-- 05 - RMM - Level 2 - HTTP Verbs
-- 06 - RMM - Level 3 - Hypermedia Controls
-- 07 - Cache
+- 04 - RMM - Level 0 - The Swamp of POX
+- 05 - RMM - Level 1 - Recursos
+- 06 - RMM - Level 2 - HTTP Verbs
+- 07 - RMM - Level 3 - Hypermedia Controls
+- 08 - Cache
 
 ### 5 princicípios do REST
 
