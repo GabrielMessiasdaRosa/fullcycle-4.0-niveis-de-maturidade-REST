@@ -7,21 +7,32 @@ const router = Router();
 router.post("/", async (req, res, next) => {
   const productService = await createProductService();
   const { name, slug, description, price, categoryIds } = req.body;
-  const product = await productService.createProduct(
-    name,
-    slug,
-    description,
-    price,
-    categoryIds
-  );
-  res.set('Location', `/admin/products/${product.id}`).status(201);
-  const resource = new Resource(product);
-  next(resource);
+  try {
+    const product = await productService.createProduct(
+      name,
+      slug,
+      description,
+      price,
+      categoryIds
+    );
+    res.set("Location", `/admin/products/${product.id}`).status(201);
+    const resource = new Resource(product);
+    next(resource);
+  } catch (e) {
+    next(e);
+  }
 });
 
 router.get("/:productId", async (req, res) => {
   const productService = await createProductService();
   const product = await productService.getProductById(+req.params.productId);
+  if (!product) {
+    return res.status(404).json({
+      title: "Not Found",
+      status: 404,
+      detail: `Product with id ${req.params.productId} not found`,
+    });
+  }
   const resource = new Resource(product);
   res.json(resource);
 });
